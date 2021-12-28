@@ -4,13 +4,18 @@
     {
         private string fName;
         private string lName;
+        private Random random = new Random();
         private int id;
-        public PlayerId(string _first, string _last, int _id)
+        
+   
+        public PlayerId(string _first, string _last)
         {
+            
             this.fName = _first;
             this.lName = _last;
-            this.id = _id;
-        }
+            // change id to an rng created thing. Keep it out of the players hands
+            this.id = random.Next(100,999);
+    }
 
 
 
@@ -21,23 +26,31 @@
             Console.WriteLine("Enter First Name: ");
             var first = Console.ReadLine();
 
+            Decor.ShowLoggedPercentage();
+
             Console.WriteLine("Enter Last Name: ");
             var last = Console.ReadLine();
 
-            Console.WriteLine("Enter 3 digit id#: ");
-            var id = Int32.Parse(Console.ReadLine());
+            // remove this later, let the function do it
+/*            Console.WriteLine("Enter 3 digit id#: ");
+            var id = Int32.Parse(Console.ReadLine());*/
+
+     
+            
            
      
-            var lawId = new PlayerId(first, last, id);
+            object lawId = new PlayerId(first, last);
 
-         
+            Decor.ShowSimplePercentage(lawId);
 
-            Console.WriteLine(lawId);
+            // just as u passed lawId into that function, pass it again into a differnet class that shows their ID and stuff on the screen - but u need a menu first
+
+            
         }
 
         public override string ToString()
         {
-            return fName + " " + lName + id;
+            return fName + " " + lName + " " + id;
         }
     }
 }
