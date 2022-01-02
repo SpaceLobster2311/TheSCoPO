@@ -2,10 +2,10 @@
 {
     public class PlayerId
     {
-        private string fName;
-        private string lName;
-        private Random random = new Random();
-        private int id;
+        private readonly string fName;
+        private readonly string lName;
+        private readonly Random random = new Random();
+        private readonly int id;
         
    
         public PlayerId(string _first, string _last)
@@ -15,7 +15,7 @@
             this.lName = _last;
             // change id to an rng created thing. Keep it out of the players hands
             this.id = random.Next(100,999);
-    }
+        }
 
 
 
@@ -27,6 +27,7 @@
             var first = Console.ReadLine();
 
             Decor.ShowLoggedPercentage();
+            
 
             Console.WriteLine("Enter Last Name: ");
             var last = Console.ReadLine();
