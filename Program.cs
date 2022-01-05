@@ -34,9 +34,13 @@ namespace TheSCoPO // Note: actual namespace depends on the project name.
             Console.WriteLine("3. LawId Profile"); // bring to a new function
             Console.WriteLine("4. Self Termonate"); // bring to a new function
 
-            var answer = Int32.Parse(Console.ReadLine());
+            var answer = Console.ReadLine();
+            // check for errors BEFORE switch case
 
-            switch(answer)
+            if(int.TryParse(answer, out int value))
+            {
+             int switchAnswer = Int32.Parse(answer);
+            switch(switchAnswer)
             {
                 case 1:
                     Console.WriteLine("This is where cases go");
@@ -55,13 +59,20 @@ namespace TheSCoPO // Note: actual namespace depends on the project name.
                     break;
 
                 case -1:
-                    Console.WriteLine(String.Format("Unknown command: {0}", answer));
+                    Console.WriteLine(String.Format("Unknown command"));
                     break;
                   
                 default:
                     Console.WriteLine(String.Format("Unknown command: {0}", answer));
                     break;
                  
+            }
+
+            }
+            else 
+            { 
+                Console.WriteLine("Error: Please input Correct Statement. Line:3 Code: g4Vhy6$k-- Hld6");
+                await MainMenu();
             }
 
             await MainMenu();
